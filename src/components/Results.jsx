@@ -10,10 +10,6 @@ const ContainerHeader = styled.div`
   justify-content: space-between;
   background: var(--color-header);
   padding: 10px;
-  position:fixed;
-  width: 100%;
-  margin: -31px 0 0 0;
-  z-index: 4;
 `;
 const LogoInfo = styled.div`
   display: flex;
