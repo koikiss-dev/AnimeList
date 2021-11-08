@@ -7,17 +7,18 @@ export const useSearch = () => {
   const SearchAnime = (e) => {
     setAnime(e.target.value);
   };
-  const getData = useCallback(() => {
-    animeData
+  const getData = useCallback(async () => {
+   try{
+      const data = await animeData
       .get(
         anime === ""
           ? "anime?q=one piece"
           : encodeURI(`anime?q=${anime}`)
       )
-      .then((data) => {
-        setValue(data.data.results);
-        
-      });
+      setValue(data.data.results);
+   }catch(error){
+     console.log(error)
+   }
   }, [anime]);
 
   useEffect(() => {
