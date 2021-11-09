@@ -39,20 +39,24 @@ const DataTarget = styled.div`
 const ResultMain = ({ src_img, title, score, synopsis }) => {
   return (
     <>
-      <ContainerTarget>
-        <Tippy content={<span>{synopsis}</span>} placement="bottom">
+      <Tippy
+        content={<span>{synopsis}</span>}
+        placement="bottom"
+        interactive={true}
+      >
+        <ContainerTarget>
           <TargetImg width="100%" height="auto" id="myTarget" src={src_img} />
-        </Tippy>
-        <DataTarget>
-          <TitleTarget>{title}</TitleTarget>
-          <Score>{score}</Score>
-          <box-icon
-            type="solid"
-            name="star"
-            color="var(--color-primary)"
-          ></box-icon>
-        </DataTarget>
-      </ContainerTarget>
+          <DataTarget>
+            <TitleTarget>{title}</TitleTarget>
+            <Score>{score}</Score>
+            <box-icon
+              type="solid"
+              name="star"
+              color="var(--color-primary)"
+            ></box-icon>
+          </DataTarget>
+        </ContainerTarget>
+      </Tippy>
     </>
   );
 };
