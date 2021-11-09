@@ -40,8 +40,8 @@ const ResultMain = ({ src_img, title, score, synopsis }) => {
   return (
     <>
       <ContainerTarget>
-        <Tippy content={<span>{synopsis}</span>} placement="right">
-          <TargetImg id="myTarget" src={src_img} />
+        <Tippy content={<span>{synopsis}</span>} placement="bottom">
+          <TargetImg width="100%" height="auto" id="myTarget" src={src_img} />
         </Tippy>
         <DataTarget>
           <TitleTarget>{title}</TitleTarget>
