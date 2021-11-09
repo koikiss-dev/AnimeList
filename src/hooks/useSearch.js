@@ -8,7 +8,9 @@ export const useSearch = () => {
     setAnime(e.target.value);
   };
   const getData = useCallback(async () => {
+    
    try{
+    
       const data = await animeData
       .get(
         anime === ""
@@ -16,6 +18,7 @@ export const useSearch = () => {
           : encodeURI(`anime?q=${anime}`)
       )
       setValue(data.data.results);
+      
    }catch(error){
      console.log(error)
    }

@@ -1,3 +1,4 @@
+import {useEffect} from "react";
 import ResultMain from "./ResultMain";
 import styled from "styled-components";
 /*///////////////////////////////////////*/
@@ -26,7 +27,7 @@ const ContentMain = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;
-  @media(min-width: 1000px) {
+  @media (min-width: 1000px) {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: 1fr;
@@ -35,19 +36,25 @@ const ContentMain = styled.main`
   }
 `;
 const Results = () => {
-  const [value, getData, SearchAnime] = useSearch()
+  const [value, getData, SearchAnime] = useSearch();
+  useEffect(() => {
+    localStorage.setItem("value", JSON.stringify(value))
+    const saved = localStorage.getItem("value");
+    const init = JSON.parse(saved);
+    return init || "";
+  }, [value])
   return (
     <>
-     <ContainerHeader>
+      <ContainerHeader>
         <LogoInfo>
           <Title>AnimeList</Title>
           <Logo src={logo} alt="logo" />
         </LogoInfo>
         <Search funcSearch={SearchAnime} />
       </ContainerHeader>
-    
       <ContentMain>
-        {value.map(({ mal_id, image_url, title, score, synopsis }) => {
+        {value
+          .map(({ mal_id, image_url, title, score, synopsis }) => {
             return (
               <ResultMain
                 key={mal_id}
@@ -57,8 +64,8 @@ const Results = () => {
                 synopsis={synopsis}
               />
             );
-          }).slice(0, 15)
-          }
+          })
+          .slice(0, 15)}
       </ContentMain>
     </>
   );
