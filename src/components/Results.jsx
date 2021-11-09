@@ -47,13 +47,14 @@ const Results = () => {
       </ContainerHeader>
     
       <ContentMain>
-        {value.map(({ mal_id, image_url, title, score }) => {
+        {value.map(({ mal_id, image_url, title, score, synopsis }) => {
             return (
               <ResultMain
                 key={mal_id}
                 src_img={image_url}
                 title={title}
                 score={score}
+                synopsis={synopsis}
               />
             );
           }).slice(0, 15)

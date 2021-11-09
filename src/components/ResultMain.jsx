@@ -1,15 +1,17 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
+import Tippy from "@tippyjs/react";
+import "tippy.js/dist/tippy.css";
 /*///////////////////////////////////////*/
 const ContainerTarget = styled.div`
   position: relative;
   width: var(--w-img);
   height: var(--h-img);
-  
-  transition: ease-in-out .10s;
+
+  transition: ease-in-out 0.1s;
   margin: 0 0 3rem 0;
-  &:hover{
+  &:hover {
     transform: scale(0.9);
   }
 `;
@@ -34,15 +36,21 @@ const DataTarget = styled.div`
   background: linear-gradient(0deg, var(--color-header), transparent);
   border-radius: 0 0 var(--radius-target) var(--radius-target);
 `;
-const ResultMain = ({ src_img, title, score }) => {
+const ResultMain = ({ src_img, title, score, synopsis }) => {
   return (
     <>
       <ContainerTarget>
-        <TargetImg src={src_img} />
+        <Tippy content={<span>{synopsis}</span>} placement="right">
+          <TargetImg id="myTarget" src={src_img} />
+        </Tippy>
         <DataTarget>
           <TitleTarget>{title}</TitleTarget>
           <Score>{score}</Score>
-          <box-icon type='solid' name='star' color="var(--color-primary)"></box-icon>
+          <box-icon
+            type="solid"
+            name="star"
+            color="var(--color-primary)"
+          ></box-icon>
         </DataTarget>
       </ContainerTarget>
     </>
@@ -53,6 +61,7 @@ ResultMain.propTypes = {
   src_img: PropTypes.string,
   title: PropTypes.string,
   score: PropTypes.number,
+  synopsis: PropTypes.string,
 };
 
 export default ResultMain;
