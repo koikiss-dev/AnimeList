@@ -4,7 +4,7 @@ import useHistory from "./useHistory";
 export const useSearch = () => {
   const [value, setValue] = useState([]);
   const [anime, setAnime] = useState("");
-  const [setName, name] = useHistory();
+  const [setName, name, nombre, setItem, item] = useHistory();
   const SearchAnime = (e) => {
     setAnime(e.target.value);
     setName(e.target.value);
@@ -15,10 +15,11 @@ export const useSearch = () => {
         encodeURI(`anime?q=${name}`)
       );
       setValue(data.data.results);
+      setItem(data.data.results);
     } catch (error) {
       console.log(error);
     }
-  }, [name]);
+  }, [name, setItem]);
 
   useEffect(() => {
     getData();
