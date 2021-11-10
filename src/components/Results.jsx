@@ -1,4 +1,3 @@
-import {useEffect} from "react";
 import ResultMain from "./ResultMain";
 import styled from "styled-components";
 /*///////////////////////////////////////*/
@@ -37,12 +36,6 @@ const ContentMain = styled.main`
 `;
 const Results = () => {
   const [value, getData, SearchAnime] = useSearch();
-  useEffect(() => {
-    localStorage.setItem("value", JSON.stringify(value))
-    const saved = localStorage.getItem("value");
-    const init = JSON.parse(saved);
-    return init || "";
-  }, [value])
   return (
     <>
       <ContainerHeader>
