@@ -57,7 +57,7 @@ const ResultMain = ({ src_img, title, score, synopsis }) => {
         placement="bottom"
         interactive={true}
         followCursor={true}
-        theme="tomato"
+        theme="newTheme"
       >
         <ContainerTarget>
           <TargetImg

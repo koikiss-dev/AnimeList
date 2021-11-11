@@ -1,4 +1,4 @@
-.tippy-box[data-theme ~= "tomato"]{
+.tippy-box[data-theme ~= "newTheme"]{
     background: var(--color-bg-blur);
     backdrop-filter: blur( 4px );
     -webkit-backdrop-filter: blur( 4px );
@@ -7,11 +7,11 @@
     /* font-size: 17px; */
 }
 @media (max-width: 1000px){
-    .tippy-box[data-theme ~= "tomato"]{
+    .tippy-box[data-theme ~= "newTheme"]{
         transform: scale(1.12);
         /* font-size: 17px; */
     }
 }
-.tippy-box[data-theme~='tomato'][data-placement^='top'] > .tippy-arrow::before {
+.tippy-box[data-theme~='newTheme'][data-placement^='top'] > .tippy-arrow::before {
     border-top-color: var(--color-bg-blur);
   }
