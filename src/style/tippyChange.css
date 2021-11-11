@@ -1,0 +1,17 @@
+.tippy-box[data-theme ~= "tomato"]{
+    background: var(--color-bg-blur);
+    backdrop-filter: blur( 4px );
+    -webkit-backdrop-filter: blur( 4px );
+    border-radius: 10px;
+    /* transform: scale(1.5); */
+    /* font-size: 17px; */
+}
+@media (max-width: 1000px){
+    .tippy-box[data-theme ~= "tomato"]{
+        transform: scale(1.12);
+        /* font-size: 17px; */
+    }
+}
+.tippy-box[data-theme~='tomato'][data-placement^='top'] > .tippy-arrow::before {
+    border-top-color: var(--color-bg-blur);
+  }

@@ -4,6 +4,7 @@ export const Styled = createGlobalStyle`
     :root{
         --bg-color: #121922;
         --color-header: #43476E;
+        --color-bg-blur:  rgba( 67, 71, 110, 0.6 );
         --color-primary: #00ADFE;
         --container-width: 350px;
         --constainer-heigth: 488px;
@@ -36,5 +37,8 @@ export const Styled = createGlobalStyle`
         font-size: 16px;
         font-family: var(--poppins);
         background-color: var(--bg-color);
+    }
+    button{
+        background: transparent;
     }
 `;
