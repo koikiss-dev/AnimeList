@@ -55,6 +55,7 @@ const Results = () => {
                 title={title}
                 score={score}
                 synopsis={synopsis}
+                id={mal_id}
               />
             );
           })

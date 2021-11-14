@@ -5,10 +5,10 @@ import { Styled } from "./Styled";
 
 const App = () => {
   return (
-    <>
+    <div>
       <Styled/>
         <Results/>
-    </>
+    </div>
   );
 };
 

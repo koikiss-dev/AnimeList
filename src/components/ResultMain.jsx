@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { React} from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import Tippy from "@tippyjs/react";
+import useLocalStorage from 'use-local-storage'
 import "tippy.js/dist/tippy.css";
 import "../style/tippyChange.css";
 /*///////////////////////////////////////*/
@@ -44,11 +45,17 @@ const DataTarget = styled.div`
 const HeartContainer = styled.div`
   cursor: pointer;
 `;
-const ResultMain = ({ src_img, title, score, synopsis }) => {
-  const [love, setLove] = useState(true);
+/*//////////////////////////////////////////////////////////*/
+const ResultMain = ({ src_img, title, score, synopsis, id }) => {
+  const [love, setLove] = useLocalStorage('love', {
+    val: false,
+    item: id,
+  });
+  const {val} = love;
   const addLoveA = () => {
-    setLove(!love);
+    setLove({...love, val : !val})
   };
+
   return (
     <>
       <Tippy
@@ -58,6 +65,7 @@ const ResultMain = ({ src_img, title, score, synopsis }) => {
         interactive={true}
         followCursor={true}
         theme="newTheme"
+        hideOnClick={false}
       >
         <ContainerTarget>
           <TargetImg
@@ -65,7 +73,7 @@ const ResultMain = ({ src_img, title, score, synopsis }) => {
             height="auto"
             id="myTarget"
             src={src_img}
-            alt={title}
+            alt={id}
           />
           <DataTarget>
             <InfoAnimeDown>
@@ -77,8 +85,8 @@ const ResultMain = ({ src_img, title, score, synopsis }) => {
                 color="var(--color-primary)"
               ></box-icon>
             </InfoAnimeDown>
-            <HeartContainer onClick={addLoveA}>
-              {love ? (
+            <HeartContainer onClick={addLoveA} >
+              {!val ? (
                 <box-icon
                   name="heart"
                   size="lg"
@@ -106,6 +114,7 @@ ResultMain.propTypes = {
   title: PropTypes.string,
   score: PropTypes.number,
   synopsis: PropTypes.string,
+  id: PropTypes.number,
 };
 
 export default ResultMain;
