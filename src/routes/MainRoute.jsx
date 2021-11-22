@@ -6,7 +6,7 @@ import HomePage from "../pages/HomePage";
 const MainRoute = () => {
   return (
     <Routes>
-      <Route path="/main" element={<HomePage />}>
+      <Route path="/" element={<HomePage />}>
           
       </Route>
       <Route path="/anime" element={<AnimePage />}>
