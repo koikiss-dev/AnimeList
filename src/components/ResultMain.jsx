@@ -2,6 +2,7 @@ import { React} from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import Tippy from "@tippyjs/react";
+import {Link, Outlet} from 'react-router-dom'
 import useLocalStorage from 'use-local-storage'
 import "tippy.js/dist/tippy.css";
 import "../style/tippyChange.css";
@@ -10,7 +11,6 @@ const ContainerTarget = styled.div`
   position: relative;
   width: var(--w-img);
   height: var(--h-img);
-
   transition: ease-in-out 0.1s;
   margin: 0 0 3rem 0;
   /* &:hover {
@@ -46,7 +46,7 @@ const HeartContainer = styled.div`
   cursor: pointer;
 `;
 /*//////////////////////////////////////////////////////////*/
-const ResultMain = ({ src_img, title, score, synopsis, id }) => {
+const ResultMain = ({ src_img, title, score, synopsis, id, link }) => {
   const [love, setLove] = useLocalStorage('love', {
     val: false,
     item: id,
@@ -67,7 +67,10 @@ const ResultMain = ({ src_img, title, score, synopsis, id }) => {
         theme="newTheme"
         hideOnClick={false}
       >
+        
         <ContainerTarget>
+        <Link to={`/anime/${title}`}>
+          
           <TargetImg
             width="100%"
             height="auto"
@@ -75,6 +78,7 @@ const ResultMain = ({ src_img, title, score, synopsis, id }) => {
             src={src_img}
             alt={id}
           />
+          </Link>
           <DataTarget>
             <InfoAnimeDown>
               <TitleTarget>{title}</TitleTarget>
@@ -103,6 +107,7 @@ const ResultMain = ({ src_img, title, score, synopsis, id }) => {
               )}
             </HeartContainer>
           </DataTarget>
+
         </ContainerTarget>
       </Tippy>
     </>

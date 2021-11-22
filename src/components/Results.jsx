@@ -1,5 +1,6 @@
 import ResultMain from "./ResultMain";
 import styled from "styled-components";
+/* import { useParams } from "react-router-dom"; */
 /*///////////////////////////////////////*/
 import logo from "../img/logoo.svg";
 import { useSearch } from "../hooks/useSearch";
@@ -35,6 +36,7 @@ const ContentMain = styled.main`
   }
 `;
 const Results = () => {
+  
   const [value, getData, SearchAnime] = useSearch();
   return (
     <>

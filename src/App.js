@@ -1,14 +1,17 @@
 import React from "react";
-
-import Results from "./components/Results";
+import * as ReactDOM from "react-dom"
+import {BrowserRouter as Rout} from "react-router-dom"
+/* import Results from "./components/Results";
+import HomePage from "./pages/HomePage"; */
+import MainRoute from "./routes/MainRoute";
 import { Styled } from "./Styled";
 
 const App = () => {
   return (
-    <div>
+    <Rout>
       <Styled/>
-        <Results/>
-    </div>
+        <MainRoute/>
+    </Rout>
   );
 };
 
