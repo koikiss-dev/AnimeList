@@ -1,13 +1,11 @@
-import React from 'react'
-import { useParams } from "react-router-dom";
-import AnimeCharacter from './AnimeCharacter';
+import React from "react";
+import AnimeCharacter from "./AnimeCharacter";
 const AnimePage = () => {
-   
-    return (
-        <div>
-            <AnimeCharacter/>
-        </div>
-    )
-}
+  return (
+    <>
+      <AnimeCharacter />
+    </>
+  );
+};
 
-export default AnimePage
+export default AnimePage;

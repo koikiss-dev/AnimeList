@@ -1,9 +1,9 @@
-import { React} from "react";
+import { React } from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import Tippy from "@tippyjs/react";
-import {Link, Outlet} from 'react-router-dom'
-import useLocalStorage from 'use-local-storage'
+import { Link } from "react-router-dom";
+import useLocalStorage from "use-local-storage";
 import "tippy.js/dist/tippy.css";
 import "../style/tippyChange.css";
 /*///////////////////////////////////////*/
@@ -47,13 +47,13 @@ const HeartContainer = styled.div`
 `;
 /*//////////////////////////////////////////////////////////*/
 const ResultMain = ({ src_img, title, score, synopsis, id, link }) => {
-  const [love, setLove] = useLocalStorage('love', {
+  const [love, setLove] = useLocalStorage("love", {
     val: false,
     item: id,
   });
-  const {val} = love;
+  const { val } = love;
   const addLoveA = () => {
-    setLove({...love, val : !val})
+    setLove({ ...love, val: !val });
   };
 
   return (
@@ -67,17 +67,15 @@ const ResultMain = ({ src_img, title, score, synopsis, id, link }) => {
         theme="newTheme"
         hideOnClick={false}
       >
-        
         <ContainerTarget>
-        <Link to={`/anime/${title}`}>
-          
-          <TargetImg
-            width="100%"
-            height="auto"
-            id="myTarget"
-            src={src_img}
-            alt={id}
-          />
+          <Link to={`/anime/${title}`}>
+            <TargetImg
+              width="100%"
+              height="auto"
+              id="myTarget"
+              src={src_img}
+              alt={id}
+            />
           </Link>
           <DataTarget>
             <InfoAnimeDown>
@@ -89,7 +87,7 @@ const ResultMain = ({ src_img, title, score, synopsis, id, link }) => {
                 color="var(--color-primary)"
               ></box-icon>
             </InfoAnimeDown>
-            <HeartContainer onClick={addLoveA} >
+            <HeartContainer onClick={addLoveA}>
               {!val ? (
                 <box-icon
                   name="heart"
@@ -107,7 +105,6 @@ const ResultMain = ({ src_img, title, score, synopsis, id, link }) => {
               )}
             </HeartContainer>
           </DataTarget>
-
         </ContainerTarget>
       </Tippy>
     </>

@@ -2,26 +2,10 @@ import ResultMain from "./ResultMain";
 import styled from "styled-components";
 /* import { useParams } from "react-router-dom"; */
 /*///////////////////////////////////////*/
-import logo from "../img/logoo.svg";
+
+import Nav from "../components/Nav";
 import { useSearch } from "../hooks/useSearch";
-import Search from "./Search";
-const ContainerHeader = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background: var(--color-header);
-  padding: 10px;
-`;
-const LogoInfo = styled.div`
-  display: flex;
-`;
-const Title = styled.h1`
-  color: #ffff;
-`;
-const Logo = styled.img`
-  max-width: 50px;
-  margin: 0 0 0 10px;
-`;
+
 const ContentMain = styled.main`
   margin: 3rem 2rem;
   display: flex;
@@ -36,17 +20,10 @@ const ContentMain = styled.main`
   }
 `;
 const Results = () => {
-  
   const [value, getData, SearchAnime] = useSearch();
   return (
     <>
-      <ContainerHeader>
-        <LogoInfo>
-          <Title>AnimeList</Title>
-          <Logo src={logo} alt="logo" />
-        </LogoInfo>
-        <Search funcSearch={SearchAnime} />
-      </ContainerHeader>
+      <Nav func={SearchAnime} />
       <ContentMain>
         {value
           .map(({ mal_id, image_url, title, score, synopsis }) => {

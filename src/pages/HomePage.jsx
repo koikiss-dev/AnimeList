@@ -1,11 +1,7 @@
-import React from 'react'
-import Results from '../components/Results'
-import { useParams } from "react-router-dom";
+import React from "react";
+import Results from "../components/Results";
 const HomePage = () => {
-    
-    return (
-        <Results/>
-    )
-}
+  return <Results />;
+};
 
-export default HomePage
+export default HomePage;
