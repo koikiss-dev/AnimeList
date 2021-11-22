@@ -37,6 +37,7 @@ const AnimeCharacter = () => {
             color: "#fff",
             display: "flex",
             justifyContent: "center",
+            margin: '3rem 0 0 0',
           }}
         >
           <box-icon
@@ -44,7 +45,7 @@ const AnimeCharacter = () => {
             animation="spin"
             color="#ffffff"
           ></box-icon>
-          <p>Cargando... Sea paciente</p>
+          <p>Cargando… Sea paciente, si es necesario recargue la página</p>
         </div>
       ) : null}
       {state.map(({ image_url, title, mal_id, synopsis, episodes, type }) => {
