@@ -30,7 +30,7 @@ const AnimeCharacter = () => {
     };
   }, [animeId]);
   return (
-    <div>
+    <>
       {loading ? (
         <div
           style={{
@@ -59,7 +59,7 @@ const AnimeCharacter = () => {
           />
         );
       })}
-    </div>
+    </>
   );
 };
 
