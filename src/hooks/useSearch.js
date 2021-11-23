@@ -4,8 +4,8 @@ import {useSearchParams} from "react-router-dom";
 import useLocalStorage from 'use-local-storage'
 export const useSearch = () => {
   const [value, setValue] = useLocalStorage("items", []);
-  const [title, setTitle] = useLocalStorage("title","");
   const [searchParams, setSearchParams] = useSearchParams("one piece")
+  const [title, setTitle] = useLocalStorage("title", "one piece" );
   
   const SearchAnime = (e) => {
     setTitle(e.target.value);
