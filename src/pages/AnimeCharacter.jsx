@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import { animeData } from "../API/apiBase";
-import { useTitle } from "../hooks/useTitle";
 import AnimeInfo from "../components/AnimeInfo";
 const AnimeCharacter = () => {
   let { animeId } = useParams();
