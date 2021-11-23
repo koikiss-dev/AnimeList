@@ -20,13 +20,30 @@ const ContentMain = styled.main`
   }
 `;
 const Results = () => {
-  const [value, getData, SearchAnime, searchParams, title] = useSearch();
+  const [value, getData, SearchAnime, searchParams, title, loading] = useSearch();
   return (
     <>
       <Helmet>
         <title>AnimeList | {title} </title>
       </Helmet>
       <Nav func={SearchAnime} />
+      {loading ? (
+        <div
+          style={{
+            color: "#fff",
+            display: "flex",
+            justifyContent: "center",
+            margin: "3rem 0 0 0",
+          }}
+        >
+          <box-icon
+            name="loader-alt"
+            animation="spin"
+            color="#ffffff"
+          ></box-icon>
+          <p>Cargando… Sea paciente, si es necesario recargue la página</p>
+        </div>
+      ) : null}
       <ContentMain>
         {value
           .map(({ mal_id, image_url, title, score, synopsis }) => {

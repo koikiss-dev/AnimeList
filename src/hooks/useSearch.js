@@ -1,9 +1,10 @@
-import {useEffect, useCallback } from "react";
+import {useEffect, useCallback, useState } from "react";
 import { animeData } from "../API/apiBase";
 import {useSearchParams} from "react-router-dom";
 import useLocalStorage from 'use-local-storage'
 export const useSearch = () => {
   const [value, setValue] = useLocalStorage("items", []);
+  const [loading, setLoading] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams("one piece")
   const [title, setTitle] = useLocalStorage("title", "one piece" );
   
@@ -13,10 +14,13 @@ export const useSearch = () => {
   };
   const getData = useCallback(async () => {
     try {
+      setLoading(true)
       const data = await animeData.get(
         encodeURI(`anime?q=${searchParams}`)
       );
+      setLoading(false)
       setValue(data.data.results);
+      
     } catch (error) {
       console.log(error);
     }
@@ -26,5 +30,5 @@ export const useSearch = () => {
     getData();
     return () => {};
   }, [getData]);
-  return [value, getData, SearchAnime, searchParams, title];
+  return [value, getData, SearchAnime, searchParams, title, loading];
 };

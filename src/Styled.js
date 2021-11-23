@@ -19,6 +19,9 @@ export const Styled = createGlobalStyle`
         --w-img: 100%;
         --h-img: auto;
     }    
+    a{
+        text-decoration: none;
+    }
     img{
         max-width: 100%;
         height: auto;

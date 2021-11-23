@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import logo from "../img/logoo.svg";
 import Search from "./Search";
+import {Link} from 'react-router-dom'
 const ContainerHeader = styled.div`
   display: flex;
   align-items: center;
@@ -23,7 +24,10 @@ const Nav = ({ func }) => {
   return (
     <ContainerHeader>
       <LogoInfo>
+        <Link to="/">
+
         <Title>AnimeList</Title>
+        </Link>
         <Logo src={logo} alt="logo" />
       </LogoInfo>
       <Search funcSearch={func} />
