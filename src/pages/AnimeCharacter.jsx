@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import {Helmet} from 'react-helmet'
 import { animeData } from "../API/apiBase";
 import AnimeInfo from "../components/AnimeInfo";
 const AnimeCharacter = () => {
@@ -14,7 +15,7 @@ const AnimeCharacter = () => {
       const valueReturn = await result.filter((name) => name.title === animeid);
       setLoading(false);
       setstate(valueReturn);
-      console.log(result.find((name) => name.title === animeid));
+      /*  console.log(result.find((name) => name.title === animeid)); */
     } catch (error) {
       const { data } = await animeData.get(encodeURI(`anime?q=${animeid}`));
       const result = await data.results;
@@ -31,13 +32,16 @@ const AnimeCharacter = () => {
   }, [animeId]);
   return (
     <>
+    <Helmet>
+      <title>AnimeList - {animeId} </title>
+    </Helmet>
       {loading ? (
         <div
           style={{
             color: "#fff",
             display: "flex",
             justifyContent: "center",
-            margin: '3rem 0 0 0',
+            margin: "3rem 0 0 0",
           }}
         >
           <box-icon
@@ -48,7 +52,7 @@ const AnimeCharacter = () => {
           <p>Cargando… Sea paciente, si es necesario recargue la página</p>
         </div>
       ) : null}
-      {state.map(({ image_url, title, mal_id, synopsis, episodes, type }) => {
+      {state.map(({ image_url, title, mal_id, synopsis, type }) => {
         return (
           <AnimeInfo
             key={mal_id}
