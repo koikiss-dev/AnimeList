@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import {Helmet} from 'react-helmet'
+import { Helmet } from "react-helmet";
 import { animeData } from "../API/apiBase";
 import AnimeInfo from "../components/AnimeInfo";
 const AnimeCharacter = () => {
@@ -32,9 +32,9 @@ const AnimeCharacter = () => {
   }, [animeId]);
   return (
     <>
-    <Helmet>
-      <title>AnimeList - {animeId} </title>
-    </Helmet>
+      <Helmet>
+        <title>AnimeList | {animeId} </title>
+      </Helmet>
       {loading ? (
         <div
           style={{
