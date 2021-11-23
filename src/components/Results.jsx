@@ -2,7 +2,7 @@ import ResultMain from "./ResultMain";
 import styled from "styled-components";
 /* import { useParams } from "react-router-dom"; */
 /*///////////////////////////////////////*/
-
+import {Helmet} from 'react-helmet'
 import Nav from "../components/Nav";
 import { useSearch } from "../hooks/useSearch";
 
@@ -20,9 +20,12 @@ const ContentMain = styled.main`
   }
 `;
 const Results = () => {
-  const [value, getData, SearchAnime] = useSearch();
+  const [value, getData, SearchAnime, anime] = useSearch();
   return (
     <>
+  <Helmet>
+        <title>AnimeList | {anime}</title>
+      </Helmet>
       <Nav func={SearchAnime} />
       <ContentMain>
         {value
