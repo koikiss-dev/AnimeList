@@ -8,7 +8,7 @@
 }
 @media (max-width: 1000px){
     .tippy-box[data-theme ~= "newTheme"]{
-        transform: scale(1.12);
+        transform: scale(1.11);
         /* font-size: 17px; */
     }
 }

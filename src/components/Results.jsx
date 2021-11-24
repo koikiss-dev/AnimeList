@@ -21,12 +21,14 @@ const ContentMain = styled.main`
 `;
 const Results = () => {
   const [value, getData, SearchAnime, searchParams, title, loading] = useSearch();
+  
   return (
     <>
       <Helmet>
         <title>AnimeList | {title} </title>
       </Helmet>
       <Nav func={SearchAnime} />
+      
       {loading ? (
         <div
           style={{
@@ -49,6 +51,7 @@ const Results = () => {
           .map(({ mal_id, image_url, title, score, synopsis }) => {
             return (
               <ResultMain
+              
                 key={mal_id}
                 src_img={image_url}
                 title={title}

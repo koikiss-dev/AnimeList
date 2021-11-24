@@ -1,4 +1,3 @@
-import { React } from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import Tippy from "@tippyjs/react";
@@ -13,9 +12,9 @@ const ContainerTarget = styled.div`
   height: var(--h-img);
   transition: ease-in-out 0.1s;
   margin: 0 0 3rem 0;
-  /* &:hover {
+  &:active {
     transform: scale(0.95);
-  } */
+  }
 `;
 const InfoAnimeDown = styled.div``;
 const TargetImg = styled.img`
@@ -55,7 +54,6 @@ const ResultMain = ({ src_img, title, score, synopsis, id, link }) => {
   const addLoveA = () => {
     setLove({ ...love, val: !val });
   };
-
   return (
     <>
       <Tippy

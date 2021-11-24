@@ -3,7 +3,7 @@ import { animeData } from "../API/apiBase";
 import {useSearchParams} from "react-router-dom";
 import useLocalStorage from 'use-local-storage'
 export const useSearch = () => {
-  const [value, setValue] = useLocalStorage("items", []);
+  const [value, setValue] = useState([]);
   const [loading, setLoading] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams("one piece")
   const [title, setTitle] = useLocalStorage("title", "one piece" );
@@ -24,7 +24,7 @@ export const useSearch = () => {
     } catch (error) {
       console.log(error);
     }
-  }, [setValue, searchParams]);
+  }, [searchParams]);
 
   useEffect(() => {
     getData();

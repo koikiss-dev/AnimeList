@@ -34,6 +34,7 @@ const SynopsisContainer = styled.div`
 }
 `;
 const ContainerTitleType = styled.div`
+margin: 2rem 0 0 0;
 @media(min-width: 1000px){
     text-align: center;
 }
