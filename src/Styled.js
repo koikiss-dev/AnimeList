@@ -21,6 +21,7 @@ export const Styled = createGlobalStyle`
     }    
     a{
         text-decoration: none;
+        color: #fff;
     }
     img{
         max-width: 100%;

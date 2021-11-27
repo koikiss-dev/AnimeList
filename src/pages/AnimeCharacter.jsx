@@ -1,61 +1,36 @@
-import { useState, useEffect, useCallback } from "react";
-import { useParams, useNavigate } from "react-router-dom";
-import Tippy from "@tippyjs/react";
-import "tippy.js/dist/tippy.css";
+import { useState, useEffect } from "react";
+import { useParams} from "react-router-dom";
+
 import { Helmet } from "react-helmet";
-import { animeData } from "../API/apiBase";
+import { animeTop } from "../API/apiBase";
 import AnimeInfo from "../components/AnimeInfo";
+import GoBackButton from "../components/GoBackButton";
 const AnimeCharacter = () => {
   let { animeId } = useParams();
   const [state, setstate] = useState([]);
   const [loading, setLoading] = useState(false);
-  const navigate = useNavigate();
-  const get = useCallback(async (animeid) => {
-    try {
-      setLoading(true);
-      const { data } = await animeData.get(encodeURI(`anime?q=${animeid}`));
-      const result = await data.results;
-      const valueReturn = await result.filter((name) => name.title === animeid);
-      setLoading(false);
-      setstate(valueReturn);
-    } catch (error) {
-      get(animeid);
+
+
+  const get = async (idAnime) =>{
+    try{
+      setLoading(true)
+      const {data} = await animeTop.get(`anime/${idAnime}`)
+      setLoading(false)
+      setstate([data])
+      console.log(data)
+    }catch(error){
+      console.log(error)
     }
-  }, []);
+  }
   useEffect(() => {
-    get(animeId);
-    return () => {
-      setstate([""]);
-    };
-  }, [animeId, get]);
+    get(animeId)
+  }, [animeId])
   return (
     <>
       <Helmet>
         <title>AnimeList | {animeId} </title>
       </Helmet>
-      <Tippy
-        content="go back"
-        placement="bottom"
-        interactive={true}
-        followCursor={true}
-        hideOnClick={false}
-      >
-        <button
-          style={{
-            border: "none",
-            backgroundColor: "var(--color-primary)",
-            padding: "1rem",
-            borderRadius: "5px",
-            top: "10px",
-            left: "10px",
-            cursor: "pointer",
-            position: "absolute",
-          }}
-          onClick={() => navigate(-1)}
-        >
-          <box-icon name="arrow-back" color="#ffffff"></box-icon>
-        </button>
-      </Tippy>
+      <GoBackButton />
       {loading ? (
         <div
           style={{
@@ -73,7 +48,7 @@ const AnimeCharacter = () => {
           <p>Cargando… Sea paciente, si es necesario recargue la página</p>
         </div>
       ) : null}
-      {state.map(({ image_url, title, mal_id, synopsis, type }) => {
+      {state.map(({ image_url, title, mal_id, synopsis, type, trailer_url }) => {
         return (
           <AnimeInfo
             key={mal_id}
@@ -81,6 +56,7 @@ const AnimeCharacter = () => {
             img={image_url}
             desc={synopsis}
             type_result={type}
+            trailer={trailer_url}
           />
         );
       })}

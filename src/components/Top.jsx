@@ -1,12 +1,13 @@
-import { useSearch } from "../hooks/useSearch";
-import { Helmet } from "react-helmet";
-import Links from '../components/Links'
-import Nav from "./Nav";
 import ResultMain from "./ResultMain";
 import styled from "styled-components";
+/* import { useParams } from "react-router-dom"; */
+/*///////////////////////////////////////*/
+import { Helmet } from "react-helmet";
+import { useTopFetch } from "../hooks/useTopFetch";
+import GoBackButton from "./GoBackButton";
 
 const ContentMain = styled.main`
-  margin: 3rem 2rem;
+  margin: 8rem 2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -18,17 +19,14 @@ const ContentMain = styled.main`
     grid-row-gap: 15px;
   }
 `;
-const Resuslts = () => {
-  const [value, getData, SearchAnime, searchParams, title, loading] =
-    useSearch();
+const Results = () => {
+  const [top, loading] = useTopFetch();
   return (
     <>
       <Helmet>
-        <title>AnimeList | {title} </title>
+        <title>AnimeList | Top </title>
       </Helmet>
-      <Nav func={SearchAnime} />
-    <Links />
-
+      <GoBackButton />
       {loading ? (
         <div
           style={{
@@ -47,7 +45,7 @@ const Resuslts = () => {
         </div>
       ) : null}
       <ContentMain>
-        {value.map(({ mal_id, image_url, title, score, synopsis }) => {
+        {top.map(({ mal_id, image_url, title, score, synopsis }) => {
           return (
             <ResultMain
               key={mal_id}
@@ -64,4 +62,4 @@ const Resuslts = () => {
   );
 };
 
-export default Resuslts;
+export default Results;

@@ -2,7 +2,6 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 import Tippy from "@tippyjs/react";
 import { Link } from "react-router-dom";
-import useLocalStorage from "use-local-storage";
 import "tippy.js/dist/tippy.css";
 import "../style/tippyChange.css";
 /*///////////////////////////////////////*/
@@ -41,21 +40,11 @@ const DataTarget = styled.div`
   background: linear-gradient(0deg, var(--color-header), transparent);
   border-radius: 0 0 var(--radius-target) var(--radius-target);
 `;
-const HeartContainer = styled.div`
-  cursor: pointer;
-`;
 /*//////////////////////////////////////////////////////////*/
 const ResultMain = ({ src_img, title, score, synopsis, id, link }) => {
-  const [love, setLove] = useLocalStorage("love", {
-    val: false,
-    item: id,
-  });
-  const { val } = love;
-  const addLoveA = () => {
-    setLove({ ...love, val: !val });
-  };
   return (
     <>
+    
       <Tippy
         className="tippy-box"
         content={<span>{synopsis}</span>}
@@ -66,7 +55,7 @@ const ResultMain = ({ src_img, title, score, synopsis, id, link }) => {
         hideOnClick={false}
       >
         <ContainerTarget>
-          <Link to={`/anime/${title}`}>
+          <Link to={`/anime/${id}`}>
             <TargetImg
               width="100%"
               height="auto"
@@ -77,7 +66,10 @@ const ResultMain = ({ src_img, title, score, synopsis, id, link }) => {
           </Link>
           <DataTarget>
             <InfoAnimeDown>
+              <Link to={`/anime/${id}`}>
+              
               <TitleTarget>{title}</TitleTarget>
+              </Link>
               <Score>{score}</Score>
               <box-icon
                 type="solid"
@@ -85,23 +77,6 @@ const ResultMain = ({ src_img, title, score, synopsis, id, link }) => {
                 color="var(--color-primary)"
               ></box-icon>
             </InfoAnimeDown>
-            <HeartContainer onClick={addLoveA}>
-              {!val ? (
-                <box-icon
-                  name="heart"
-                  size="lg"
-                  color="var(--color-primary)"
-                  type="regular"
-                ></box-icon>
-              ) : (
-                <box-icon
-                  name="heart"
-                  size="lg"
-                  type="solid"
-                  color="var(--color-primary)"
-                ></box-icon>
-              )}
-            </HeartContainer>
           </DataTarget>
         </ContainerTarget>
       </Tippy>

@@ -4,49 +4,49 @@ const ContainerInfoMain = styled.section`
   color: #ffff;
   padding: 2rem;
   text-align: center;
-  @media(min-width: 1000px){
-      display: flex;
-      flex-flow: column;
-      text-align: initial;
+  @media (min-width: 1000px) {
+    display: flex;
+    flex-flow: column;
+    text-align: initial;
   }
 `;
 const Title = styled.h1`
-  @media(min-width: 1000px){
+  @media (min-width: 1000px) {
     font-size: 35px;
-}
+  }
 `;
 const Img = styled.img`
   border-radius: var(--radius-target);
   margin: 2rem 0;
   width: var(--w-img);
   height: var(--h-img);
-  @media(min-width: 1000px){
+  @media (min-width: 1000px) {
     max-width: 20%;
-}
+  }
 `;
 const SynopsisContainer = styled.div`
-@media(min-width: 1000px){
+  @media (min-width: 1000px) {
     text-align: initial;
     margin: 0 0 0 5rem;
     width: 35%;
     font-size: 20px;
     line-height: 40px;
-}
+  }
 `;
 const ContainerTitleType = styled.div`
-margin: 2rem 0 0 0;
-@media(min-width: 1000px){
+  margin: 2rem 0 0 0;
+  @media (min-width: 1000px) {
     text-align: center;
-}
+  }
 `;
 const ContainerImageDesc = styled.div`
-@media(min-width: 1000px){
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-`
-const AnimeInfo = ({ title, img, desc, type_result }) => {
+  @media (min-width: 1000px) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+`;
+const AnimeInfo = ({ title, img, desc, type_result, trailer }) => {
   return (
     <ContainerInfoMain>
       <ContainerTitleType>
@@ -54,11 +54,19 @@ const AnimeInfo = ({ title, img, desc, type_result }) => {
         <Title>{title} </Title>
       </ContainerTitleType>
       <ContainerImageDesc>
-      <Img src={img} alt={title} />
-      <SynopsisContainer>
-        <p>{desc}</p>
-      </SynopsisContainer>
+        <Img src={img} alt={title} />
+        <SynopsisContainer>
+          <p>{desc}</p>
+        </SynopsisContainer>
       </ContainerImageDesc>
+      <iframe
+        src={trailer}
+        width="100%"
+        height="500"
+        frameBorder="0"
+        allowFullScreen
+        title="video"
+      ></iframe>
     </ContainerInfoMain>
   );
 };

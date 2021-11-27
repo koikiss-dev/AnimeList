@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import PropTypes from 'prop-types'
+import PropTypes from "prop-types";
 /*///////////////////////////////////////*/
 const ContainerInput = styled.div`
   display: flex;
@@ -37,26 +37,23 @@ const Input = styled.input`
     opacity: 0.5;
   }
 `;
-const Search = ({funcSearch}) => {
+const Search = ({ funcSearch }) => {
   return (
     <>
-    <ContainerInput>
-      <box-icon name="search" color="#ffff"></box-icon>
-      <Input
-        onKeyUp={(e) =>
-          e.key === "Enter" ? funcSearch(e) : null
-        }
-        type="text"
-        placeholder="Name the anime"
-      />
-    </ContainerInput>
-  </>
-  )
-}
+      <ContainerInput>
+        <box-icon name="search" color="#ffff"></box-icon>
+        <Input
+          onKeyUp={(e) => (e.key === "Enter" ? funcSearch(e) : null)}
+          type="text"
+          placeholder="Name the anime"
+        />
+      </ContainerInput>
+    </>
+  );
+};
 
 Search.propTypes = {
-  funcSearch: PropTypes.func
-}
+  funcSearch: PropTypes.func,
+};
 
-export default Search
-
+export default Search;
