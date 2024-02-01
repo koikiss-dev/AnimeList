@@ -11260,9 +11260,9 @@ url@^0.11.0:
     querystring "0.2.0"
 
 use-local-storage@^2.2.5:
-  version "2.2.5"
-  resolved "https://registry.yarnpkg.com/use-local-storage/-/use-local-storage-2.2.5.tgz#58513ab8fca52efba648e824be8d1cbf89496bed"
-  integrity sha512-KY+9wkIFHnLpBcRrIcXAhjgcjaJtWF8YGJhlZrLXaAxICXiKamtYVzHMVOj+d0Ph3yUusbYh9AmMq+BSzCfegA==
+  version "2.3.6"
+  resolved "https://registry.yarnpkg.com/use-local-storage/-/use-local-storage-2.3.6.tgz#11058465143aa7537556af482b21c6b1f77a78a6"
+  integrity sha512-OJQHWYbH2M5mMaSY6uYIbfzOm7eVz1fBYFw1wqQurCR2+gQb+FjVt0KzzDAsgTOSEUNVAbaiJ0I4WcNjRn7u5w==
 
 use@^3.1.0:
   version "3.1.1"
